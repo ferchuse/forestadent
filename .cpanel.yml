@@ -1,5 +1,5 @@
 ---
 deployment:
   tasks:
-    - export DEPLOYPATH=/home/atoshka/public_html/atoshka/
+    - export DEPLOYPATH=/home/microsit/public_html/forestadent/
     - /bin/cp -R images $DEPLOYPATH
