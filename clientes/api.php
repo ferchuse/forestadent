@@ -108,7 +108,7 @@
 		Client Secret: <input name="client_secret" value="1044612995dbbbe2c32c174c28601362436f3fe074"><br>
 		
 		Code: <input name="code" value="<?= $_GET["code"];?>"><br>
-		<input type="hidden" name="redirect_uri" value="http://localhost/forestadent/clientes/api.php"><br>
+		<input type="hidden" name="redirect_uri" value="https://micrositio.mx/forestadent/clientes/api.php"><br>
 		<button>
 			Enviar
 		</button>
