@@ -1,0 +1,27 @@
+{
+  "short_name": "Estambres Atoshka",
+  "name": "Estambres Atoshka",
+  "icons": [
+    {
+      "src": "img/logo.png",
+      "type": "image/png",
+      "sizes": "48x48"
+    },
+    {
+      "src": "img/logo.png",
+      "type": "image/png",
+      "sizes": "96x96"
+    },
+    {
+      "src": "img/logo.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    }
+  ],
+  "start_url": "index.php",
+	"background_color": "#009688",
+	"display": "standalone",
+	"theme_color": "#009688"
+
+
+}
