@@ -42,6 +42,11 @@ function getMailingLists(token){
 		beforeSend: function(request) {
 			request.setRequestHeader("Authorization", 'Zoho-oauthtoken ' + token);
 		},
+		crossDomain: true,
+		
+		dataType: 'jsonp',
+		
+		type: "GET",
 		"method":"GET",
 		// "headers": { 'Authorization:':  },
 		"data":{
