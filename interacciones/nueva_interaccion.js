@@ -1,7 +1,13 @@
 
+var clientes = [];
+var index = 0;
+
 $(document).ready( function onLoad(){
 	
 	$('#form_interaccion').submit( guardarInteraccion);
+	
+	
+	getCliente();
 	
 	// getMailingLists("1000.0093a5e85fa7b77b3f67301058235327.ba4cdf8af899085bd7f7c09b5c3f051a");
 	
@@ -73,44 +79,92 @@ function getContacts(token){
 	
 	
 }
+function getCliente(){
+	
+	$.ajax({
+		"url":"siguiente_cliente.php"
+		
+		}).done(function(respuesta){
+		clientes = respuesta.clientes;
+		
+		
+		console.log(respuesta)
+		renderCliente(clientes[index]);
+		
+	})
+	
+	
+}
+
+
+function renderCliente(cliente){
+	console.log("renderCliente*()", cliente);
+	$("#id_clientes").val(cliente.id_clientes);
+	$("#nombre").val(cliente.nombre);
+	$("#telefono").html(cliente.telefono).attr("href", "tel:"+ cliente.telefono);
+	$("#correo").html(cliente.correo).attr("href", "mailto:"+ cliente.correo);
+	$("#estado").val(cliente.estado);
+	$("#especialidad").val(cliente.especialidad);
+	
+	$("#tabla_historial tbody").html("");
+	
+	if(cliente.historial){
+		for (var interaccion of cliente.historial) {
+			historial+= `
+			<tr>
+			<td class="text-center">${interaccion.fecha}</td>
+			<td class="text-center">${interaccion.tipo_interaccion}</td>
+			<td class="text-center">${interaccion.accion}</td>
+			<td class="text-center">${interaccion.observaciones}</td>
+			
+			</tr>`;
+			
+		}
+	}
+	
+	$("#tabla_historial tbody").html(historial);
+	
+}
 
 
 function guardarInteraccion(event){
 	event.preventDefault();
-	console.log("guardarInteraccion()");
+console.log("guardarInteraccion()");
+
+var boton = $(this).find(":submit");
+var icono = boton.find('.fa');
+boton.prop('disabled',true);
+icono.toggleClass('fa-save fa-spinner fa-pulse');
+
+
+$.ajax({
+	url: 'guardar_interaccion.php',
+	method: 'POST',
+	dataType: 'JSON',
+	data:{
+		id_clientes: $('#id_clientes').val(),
+		tipo_interaccion: $('#tipo_interaccion').val(),
+		accion: $('#accion').val(),
+		observaciones: $("#observaciones").val(),
+	}
+	}).done(function(respuesta){
 	
-	var boton = $(this).find(":submit");
-	var icono = boton.find('.fa');
-	boton.prop('disabled',true);
+	if(respuesta.estatus == "success"){
+		alertify.success('Guardado');
+		$("#modal_interaccion").modal("hide");
+		index++;
+		renderCliente(clientes[index]);
+	}
+	else{
+		
+		alertify.error(respuesta.mensaje);
+	}
+	}).fail(function(xhr, error, ernum){
+	alertify.error("Ocurrio un error:"+ error + ernum );
+	}).always(function(){
+	boton.prop('disabled',false);
 	icono.toggleClass('fa-save fa-spinner fa-pulse');
 	
-	
-	$.ajax({
-		url: 'guardar_interaccion.php',
-		method: 'POST',
-		dataType: 'JSON',
-		data:{
-			id_clientes: $('#id_clientes').val(),
-			tipo_interaccion: $('#tipo_interaccion').val(),
-			accion: $('#accion').val(),
-			observaciones: $("#observaciones").val(),
-		}
-		}).done(function(respuesta){
-		
-		if(respuesta.estatus == "success"){
-			alertify.success('Guardado');
-			$("#modal_interaccion").modal("hide");
-		}
-		else{
-			
-			alertify.error(respuesta.mensaje);
-		}
-		}).fail(function(xhr, error, ernum){
-		alertify.error("Ocurrio un error:"+ error + ernum );
-		}).always(function(){
-		boton.prop('disabled',false);
-		icono.toggleClass('fa-save fa-spinner fa-pulse');
-		
-	});
-	
+});
+
 }

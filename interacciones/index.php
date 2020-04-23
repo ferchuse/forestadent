@@ -3,25 +3,33 @@
 	include("../funciones/generar_select.php");
 	include("../conexi.php");
 	
+	
+	$url = "https://campaigns.zoho.com/api/v1.1/getmailinglists";
+	
+	// $ch = curl_init(); //ajax
+	// curl_setopt($ch, CURLOPT_URL, $url); //url
+	// curl_setopt($ch, CURLOPT_POST, true); // method
+	// curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // 
+	// curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query(array("resfmt" => "JSON")) ; // data
+	// curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+	// 'Authorization: Zoho-oauthtoken '
+	// ));
+//	$result = curl_exec($ch);
+	// if($result === FALSE){
+	// $respuesta["curl_estatus"] = "error";
+	// $respuesta["curl_mensaje"] = 'Curl failed: '. curl_error($ch);
+	// }
+	// else{
+	
+	// }
+	
+	// print_r($result);
+	// curl_close($ch);
+	
+	
 	$link = Conectarse();
 	$menu_activo = $_GET["tipo_movimiento"];
 	
-	switch($_GET["tipo_movimiento"]){
-		
-		case 'ENTRADA':
-		$bg = "bg-success";
-		$display = "none";
-		break;
-		case 'SALIDA':
-		$bg = "bg-danger";
-		$display = "none";
-		break;
-		case 'VENTA':
-		$bg = "bg-info";
-		$display = "";
-		break;
-		
-	}
 	
 ?>
 <!DOCTYPE html>
@@ -61,47 +69,48 @@
   <body>
 		<?php include("../menu.php");?>
 		
-		<form id="form_agregar_producto" class="" autocomplete="off">
-		</form>
+		
 		<div class="container-fluid">
 			<div class="row">
 				
 				<div class="col-sm-5 border px-2" >
 					<legend class="text-center">Datos del Contacto</legend>
+					
+					<input type="hidden"  id="index" value="0">
 					<input type="hidden"  id="id_clientes" value="1">
 					<div class="form-group">
 						<label for="">Nombre:</label>
-						<input  class="form-control"  readonly value="Andrea Herrera">
+						<input  class="form-control"  id="nombre" readonly value="Andrea Herrera">
 					</div>
 					
 					<div class="form-group">
 						<label for="">Teléfono:</label>
-						<p class="form-control-static"><a href="tel:123456456">123456456</a></p>						
+						<p class="form-control-static"><a id="telefono" href="tel:123456456">123456456</a></p>						
 					</div>
 					
 					<div class="form-group">
 						<label for="">Estado</label>
-						<input class="form-control" readonly value="Ciudad de México">
+						<input class="form-control" readonly value="Ciudad de México" id="estado">
 					</div>
 					<div class="form-group">
 						<label for="">Especialidad</label>
-						<input class="form-control" readonly value="ORTODONCIA">
+						<input class="form-control" readonly value="ORTODONCIA" id="especialidad">
 					</div>
 					<div class="form-group">
 						<label for="">Correo</label>
-						<p class="form-control-static"><a href="mailto:2183andre@gmail.com">2183andre@gmail.com</a></p>	
+						<p class="form-control-static"><a id="correo" href="mailto:2183andre@gmail.com">2183andre@gmail.com</a></p>	
 					</div>
 					
 				</div>
 				<div class="col-sm-7">
 					
 					<legend class="text-center">Historial</legend>
-					<table  class="table table-hover">
+					<table  id="tabla_historial" class="table table-hover">
 						<thead>
 							<tr>
 								<th class="text-center">Fecha</th>
 								<th class="text-center">Tipo Interacción</th>
-								<th class="text-center">Tipo Interacción</th>
+								<th class="text-center">Acción</th>
 								<th class="text-center">Observaciones</th>
 							</tr> 
 						</thead>
@@ -131,11 +140,11 @@
 			
 			
 			<section id="footer">
-				<button class="btn btn-secondary btn-lg" id="btn_listas" type="button">
+				<button hidden class="btn btn-secondary btn-lg" id="btn_listas" type="button">
 					Listas
 					<i class="fas fa-list"></i>
 				</button>
-				<button class="btn btn-secondary btn-lg" id="btn_contactos" type="button">
+				<button hidden class="btn btn-secondary btn-lg" id="btn_contactos" type="button">
 					Contactos
 					<i class="fas fa-users"></i>
 				</button>

@@ -11,6 +11,12 @@
 		scope=ZohoCampaigns.contact.READ&
 		redirect_uri=http://localhost/forestadent/clientes/api.php
 		
+		https://accounts.zoho.com/oauth/v2/auth
+		?response_type=code&
+		client_id=1000.L5HG1LK8GSA2UP8B4WVPOOSD1YBX9H&
+		scope=ZohoCampaigns.contact.READ&
+		redirect_uri=http://micrositio.mx/forestadent/clientes/api.php
+		
 		https://accounts.zoho.com/oauth/v2/auth?response_type=code&client_id=1000.L5HG1LK8GSA2UP8B4WVPOOSD1YBX9H&scope=ZohoCampaigns.contact.READ&redirect_uri=http://micrositio.mx/forestadent/clientes/api.php
 		
 		CODE: 	1000.e5b33a5781d937a5b8f652af010dcd41.0446bbfd31235d434811be365800d94f
