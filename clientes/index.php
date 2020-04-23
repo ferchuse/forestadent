@@ -42,7 +42,7 @@
 				</div>
 				<div class="col-7">
 					<form class="form-inline" id="form_filtros">
-						<input type="hidden" id="sort" name="sort" value="alias_clientes">
+						<input type="hidden" id="sort" name="sort" value="apellidos">
 						<input type="hidden" id="order" name="order" value="ASC">
 						
 						
