@@ -98,6 +98,8 @@ function getCliente(){
 
 
 function renderCliente(cliente){
+	var historial= "";
+	
 	console.log("renderCliente*()", cliente);
 	$("#id_clientes").val(cliente.id_clientes);
 	$("#nombre").val(cliente.nombre);
@@ -112,7 +114,7 @@ function renderCliente(cliente){
 		for (var interaccion of cliente.historial) {
 			historial+= `
 			<tr>
-			<td class="text-center">${interaccion.fecha}</td>
+			<td class="text-center">${interaccion.fecha?interacciones}</td>
 			<td class="text-center">${interaccion.tipo_interaccion}</td>
 			<td class="text-center">${interaccion.accion}</td>
 			<td class="text-center">${interaccion.observaciones}</td>
@@ -128,7 +130,7 @@ function renderCliente(cliente){
 
 
 function guardarInteraccion(event){
-	event.preventDefault();
+event.preventDefault();
 console.log("guardarInteraccion()");
 
 var boton = $(this).find(":submit");
