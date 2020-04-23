@@ -7,7 +7,7 @@
 	$total_comisiones = 0;
 	
 	$consulta = "SELECT
-	id_vendedores, nombre_vendedores, abonado_vendedor
+	id_vendedores, nombre_vendedores
 	FROM
 	vendedores
 	LEFT JOIN (
@@ -50,7 +50,7 @@
 <hr>
 <?php if(count($registros) > 0){?>
 
-	<table class="table table-striped">
+	<table class="table table-striped table-hover">
 		<thead>
 			<tr class="success">
 				<th>Vendedor</th>
@@ -67,7 +67,7 @@
 					$comision =  $fila["abonado_vendedor"] * .1;
 					$total_comisiones+= $comision;
 				?>
-				<tr class="">
+				<tr class="clickable" data-id_vendedores="<?php echo $fila["id_vendedores"];?>">
 					<td><?php echo $fila["nombre_vendedores"] ?></td> 
 					<td class="text-right"><?php echo $fila["abonado_vendedor"] ?></td> 
 					<td class="text-right"><?php echo $comision ?></td> 
@@ -76,7 +76,7 @@
 				}
 			?>
 		</tbody>
-		<tfoot class="bg-secondary text-white">
+		<tfoot class="bg-primary text-white">
 			<tr class="">
 				<td  ><b>TOTALES</b></td> 
 				<td class="text-right"><b>$<?php echo number_format($total) ?></b></td> 

@@ -64,13 +64,10 @@
 				<td><?php echo $cliente["telefono"]; ?></td>
 				<td><?php echo $cliente["correo"]; ?></td>
 				
-				<td hidden>
-					
-					
+				<td >
 					<button class="btn btn-info btn_historial" data-id_registro="<?php echo $cliente["id_clientes"] ?>" data-nombre="<?php echo $cliente["nombre_clientes"] ?>">
 						<i class="fa fa-history"></i> Historial
 					</button>
-					
 				</td>
 				
 			</tr>

@@ -12,7 +12,7 @@
 	<div class="collapse navbar-collapse" id="collapsibleNavbar">
 		<ul class="navbar-nav mr-auto">
 			<?php if($_COOKIE["permiso_usuarios"] == "administrador" ){?>
-				<li class="nav-item">
+				<li class="nav-item" hidden>
 					<a class="nav-link" href="../cursos/index.php">
 						<i class="fas fa-dollar-sign"></i> Cursos
 					</a>
@@ -32,7 +32,12 @@
 						<i class="fas fa-user"></i> Usuarios
 					</a>
 				</li>
-				<li class="nav-item dropdown">
+				<li class="nav-item ">
+					<a class="nav-link" href="../reportes/historial.php">
+						<i class="fas fa-chart-bar"></i> Reportes
+					</a>
+				</li>
+				<li hidden class="nav-item dropdown">
 					<a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 						<i class="fas fa-chart-bar"></i> Reportes
 					</a>

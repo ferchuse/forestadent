@@ -44,8 +44,8 @@
 							
 							<div id="login_logo">
 								
-								<i class="fas fa-user-lock fa-5x"></i>
-								<!-- <img class=" img-responsive" src="../img/logo.jpg"> -->
+								<!--<i class="fas fa-user-lock fa-5x"></i>-->
+							<img class="img-responsive" src="../img/logo.jpg"> 
 							</div>
 							
 							<?php 

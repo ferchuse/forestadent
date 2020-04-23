@@ -22,7 +22,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 		
-    <title>Reporte de Comisiones</title>
+    <title>Reporte de Interacciones</title>
 		
     <?php include("../styles.php"); ?>
 		<style>
@@ -39,7 +39,7 @@
 		<div class="container-fluid">
 			<div class="row">
 				<div class="col-md-12">
-					<h3 class="text-center">Reporte de Comisiones</h3>
+					<h3 class="text-center">Reporte de Interacciones</h3>
 					<hr>
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 		</div>
 		
 		<?php  include('../scripts.php'); ?>
-		<script src="comisiones.js"></script>
+		<script src="historial.js<?= date("YmdHis")?>"></script>
 	</body>
 	
 	

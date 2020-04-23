@@ -18,13 +18,13 @@ function listarComisiones(event){
 	$icono.toggleClass("fa-search fa-spinner fa-spin");			
 	
 	$.ajax({ 
-		"url": "tabla_comisiones.php",
+		"url": "lista_hostorial.php",
 		"method": "POST",
 		"data": $("#form_reportes").serialize()
 		}).done( function alTerminar (respuesta){					
 		
 		$("#listar_registros").html(respuesta);
-		$(".clickable").click(detalleComisiones);
+		// $(".clickable").click(detalleComisiones);
 		
 		}).always(function(){
 		
