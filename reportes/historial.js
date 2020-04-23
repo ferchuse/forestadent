@@ -18,8 +18,8 @@ function listarComisiones(event){
 	$icono.toggleClass("fa-search fa-spinner fa-spin");			
 	
 	$.ajax({ 
-		"url": "lista_hostorial.php",
-		"method": "POST",
+		"url": "lista_historial.php",
+		"method": "GET",
 		"data": $("#form_reportes").serialize()
 		}).done( function alTerminar (respuesta){					
 		

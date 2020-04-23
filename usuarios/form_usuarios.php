@@ -12,20 +12,25 @@
 						<div class="col-md-12">
 							
 							<input id="id_usuarios" hidden name="id_usuarios">
-							<label for="nombre_usuarios" class="text-center">Usuario: </label>
-							<input type="text" class="form-control" id="nombre_usuarios" name="nombre_usuarios" autofocus required>
 							
-							<label for="pass_usuarios" class="text-center">Contraseña: </label>
-							<input type="password" class="form-control" id="pass_usuarios" name="pass_usuarios" required>
+							<div class="form-group" >
+								<label for="nombre_usuarios" class="text-center">Usuario: </label>
+								<input type="text" class="form-control" id="nombre_usuarios" name="nombre_usuarios" autofocus required>
+							</div>
 							
-							<label for="permiso_usuarios" class="text-center">Permisos: </label>
-							<select class="form-control" name="permiso_usuarios" id="permiso_usuarios" required>
-								<option value="">Elije ...</option>
-								<option value="administrador">Administrador</option>
-								<option value="Vendedor">Vendedor</option>
-								<option value="categorias">Categorías</option>
-							</select>
-							
+							<div class="form-group" >
+								<label for="pass_usuarios" class="text-center">Contraseña: </label>
+								<input type="password" class="form-control" id="pass_usuarios" name="pass_usuarios" required>
+							</div>
+							<div class="form-group" hidden>
+								<label for="permiso_usuarios" class="text-center">Permisos: </label>
+								<select class="form-control" name="permiso_usuarios" id="permiso_usuarios" required>
+									<option value="">Elije ...</option>
+									<option value="administrador">Administrador</option>
+									<option value="Vendedor">Vendedor</option>
+									<option value="categorias">Categorías</option>
+								</select>
+							</div>
 						</div>
 					</div>
 				</div>
@@ -38,9 +43,9 @@
 						<i class="fa fa-save"></i> 
 						Guardar
 					</button>
+					</div>
+				</div>
+				<!--FINAL DEL MODAL -->	
+			</div>
 		</div>
-	</div>
-	<!--FINAL DEL MODAL -->	
-</div>
-</div>
-</form>
+	</form>		

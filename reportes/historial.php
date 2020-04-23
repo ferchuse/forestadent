@@ -48,11 +48,11 @@
 					<form id="form_reportes" class="form-inline">
 						<div class="form-group mr-2">
 							<label for="fecha_inicio">Desde:</label>
-							<input type="date" name="fecha_inicio" id="fecha_inicio" class="form-control" value="<?php echo $fa_inicial;?>">
+							<input type="date" name="fecha_inicial"  class="form-control" value="<?php echo $fa_inicial;?>">
 						</div>
 						<div class="form-group mr-2">
 							<label for="fecha_fin">Hasta:</label>
-							<input type="date" name="fecha_fin" id="fecha_fin" class="form-control" value="<?php echo $fa_final;?>">
+							<input type="date" name="fecha_final"  class="form-control" value="<?php echo $fa_final;?>">
 						</div>
 						<button type="submit" class="btn btn-success" id="btn_buscar">
 							<i class="fa fa-search"></i> Buscar
@@ -63,7 +63,7 @@
 			</div>
 			<hr>
 			<div class="row text-center" >
-				<div class="col-10 " id="listar_registros">
+				<div class="col-sm-12 table-responsive" id="listar_registros">
 					
 				</div>
 			</div>
@@ -73,7 +73,7 @@
 		</div>
 		
 		<?php  include('../scripts.php'); ?>
-		<script src="historial.js<?= date("YmdHis")?>"></script>
+		<script src="historial.js?v=<?= date("YmdHis")?>"></script>
 	</body>
 	
 	

@@ -21,7 +21,7 @@
 				<td class="text-center"><?php echo $nombre_usuarios;?></td>
 				<td class="text-center"><?php echo $permiso_usuarios;?></td>
 				<td class="text-center">
-					<button class="btn btn-info btn_permisos" type="button" title="Permisos" data-id_registro="<?php echo $id_usuarios;?>">
+					<button hidden class="btn btn-info btn_permisos" type="button" title="Permisos" data-id_registro="<?php echo $id_usuarios;?>">
 						<i class="fa fa-keys"></i>
 					</button>
 					<button class="btn btn-warning btn_editar" type="button" title="Editar" data-id_registro="<?php echo $id_usuarios;?>">

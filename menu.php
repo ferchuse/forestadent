@@ -29,7 +29,7 @@
 				</li>
 				<li class="nav-item ">
 					<a class="nav-link" href="../usuarios/usuarios.php">
-						<i class="fas fa-user"></i> Usuarios
+						<i class="fas fa-user"></i> Administradores
 					</a>
 				</li>
 				<li class="nav-item ">

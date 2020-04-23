@@ -7,87 +7,100 @@
 	$total_comisiones = 0;
 	
 	$consulta = "SELECT
-	id_vendedores, nombre_vendedores
-	FROM
-	vendedores
-	LEFT JOIN (
-	SELECT
-	id_vendedores,
-	COALESCE(SUM(abonado_cliente), 0) AS abonado_vendedor
-	FROM
-	clientes
-	LEFT JOIN (
-	SELECT
-	id_clientes,
-	SUM(importe) AS abonado_cliente
-	FROM
-	abonos
-	WHERE 
-	DATE(fecha) BETWEEN '{$_POST['fecha_inicio']}'
-	AND '{$_POST['fecha_fin']}'  
-	GROUP BY
-	id_clientes
-	) AS abonado_cliente USING (id_clientes)
-	GROUP BY
-	id_vendedores
-	) AS abonado_vendedor
-	USING (id_vendedores)
+	* FROM vendedores
 	";
 	$result = mysqli_query($link, $consulta);
 	
 	if($result){
 		while($fila = mysqli_fetch_assoc($result)){
-			$registros[] = $fila;
+			$vendedores[] = $fila;
 		}
 	}
 	else{ 
 		die("Error en la consulta $consulta". mysqli_error($link));
 	}
 ?>
-<pre hidden>
-	<?php echo $consulta;?>
-</pre>
-<hr>
-<?php if(count($registros) > 0){?>
 
-	<table class="table table-striped table-hover">
-		<thead>
-			<tr class="success">
-				<th>Vendedor</th>
-				<th>Total Cobrado</th>
-				<th>Comisión</th>
-			</tr>
-		</thead>
-		<tbody>
-			
-			<?php 
-				
-				foreach($registros AS $i=>$fila){	
-					$total+=  $fila["abonado_vendedor"];
-					$comision =  $fila["abonado_vendedor"] * .1;
-					$total_comisiones+= $comision;
-				?>
-				<tr class="clickable" data-id_vendedores="<?php echo $fila["id_vendedores"];?>">
-					<td><?php echo $fila["nombre_vendedores"] ?></td> 
-					<td class="text-right"><?php echo $fila["abonado_vendedor"] ?></td> 
-					<td class="text-right"><?php echo $comision ?></td> 
-				</tr>
-				<?php
-				}
-			?>
-		</tbody>
-		<tfoot class="bg-primary text-white">
-			<tr class="">
-				<td  ><b>TOTALES</b></td> 
-				<td class="text-right"><b>$<?php echo number_format($total) ?></b></td> 
-				<td class="text-right"><b>$<?php echo number_format($total_comisiones)?></b></td> 
-			</tr>
-		</tfoot>
-	</table>
-	<?php
-	}
-	else{
+
+<hr>
+
+
+<?php 
+	
+
+	foreach($vendedores as $vendedor){
+		$historial = [];
+		$consulta = "SELECT
+		* FROM interacciones 
+		LEFT JOIN clientes USING (id_clientes)
+		WHERE 
+		interacciones.id_vendedores = '{$vendedor["id_vendedores"]}'
+		AND DATE(fecha_interacciones) BETWEEN '{$_GET["fecha_inicial"]}'
+		AND '{$_GET["fecha_final"]}'
+		";
+		$result = mysqli_query($link, $consulta);
 		
-		echo "<div class='alert alert-warning'>No hay Ventas en este periodo</div>";
+		if($result){
+			while($fila = mysqli_fetch_assoc($result)){
+				$historial[] = $fila;
+			}
+		}
+		else{ 
+			die("Error en la consulta $consulta". mysqli_error($link));
+		}
+		
+		echo 	"<legend >". $vendedor["nombre_vendedores"]."</legend >";
+		// echo 	"<pre >".print_r($result)."</pre >";
+		
+		
+		if(mysqli_num_rows($result) == 0){
+			
+			echo "<div class='alert alert-warning'> No hay registros</div>";
+		}
+		else{
+			
+		?>
+	
+		<table class="table table-striped table-hover">
+			<thead>
+				<tr class="success">
+					<th>Cliente</th>
+					<th>Fecha</th>
+					<th>Tipo de Interacción</th>
+					<th>Accion</th>
+					<th>Observaciones</th>
+				</tr>
+			</thead>
+			<tbody>
+				
+				<?php 
+					
+					foreach($historial AS $i=>$fila){	
+						
+					?>
+					<tr>
+						<td><?= $fila["nombre"]." ".$fila["apellidos"] ?></td> 
+						<td><?= $fila["fecha_interacciones"] ?></td> 
+						<td><?= $fila["tipo_interaccion"] ?></td> 
+						<td><?= $fila["accion"] ?></td> 
+						<td><?= $fila["observaciones"] ?></td> 
+					</tr>
+					<?php
+					}
+				?>
+			</tbody>
+			<tfoot class="bg-secondary text-white">
+				<tr class="" >
+					<td colspan="5"><?= count($historial);?> Registros</td> 
+				</tr>
+			</tfoot>
+		</table>
+		</br>
+		</hr>
+		
+		
+		<?php
+		}
 	}
+	
 ?>
