@@ -24,9 +24,31 @@
 	WHERE nombre LIKE '%$query%' ORDER BY $campo LIMIT 50 ";
 	$result= mysqli_query($link,$consulta);
 	if($result){
-		while($fila=mysqli_fetch_assoc($result)){
+		while($cliente=mysqli_fetch_assoc($result)){
+			$consulta_historial = "
+			SELECT * 
+			FROM
+			interacciones
+			WHERE id_clientes = '{$cliente["id_clientes"]}'
 			
-			$respuesta ["suggestions"][]  = ["value" => $fila[$campo], "data" => $fila ];
+			";
+			
+			$result_historial= mysqli_query( $link, $consulta_historial );
+			if($result_historial){
+			
+				while($historial = mysqli_fetch_assoc($result_historial)) {
+					
+					$cliente["historial"][] = $historial; 
+					
+					
+				}
+			}
+			else{
+				$respuesta["result_productos"] = mysqli_error($link); 
+			}
+			
+			$respuesta["clientes"][] =  $cliente;
+			$respuesta ["suggestions"][]  = ["value" => $cliente[$campo], "data" => $cliente ];
 		}
 	}
 	else $respuesta["result"] = "Error". mysqli_error($link);
