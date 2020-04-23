@@ -22,6 +22,21 @@ $(document).ready( function onLoad(){
 		getContacts("1000.8178248c89d6ab92fc9d5737f7509ca1.423ce80e06da9d5748ee51a65d1e04f7");
 		
 	})
+	
+	
+	$("#buscar_cliente").autocomplete({
+		serviceUrl: "consultas/clientes_autocomplete.php",   
+		onSelect: function alSeleccionar(eleccion){
+			console.log("Elegiste: ",eleccion);
+			
+			renderCliente(eleccion.data);
+			$("#buscar_cliente").val("");
+		},
+		autoSelectFirst	:true , 
+		showNoSuggestionNotice	:true , 
+		noSuggestionNotice	: "Sin Resultados"
+	});
+	
 }); 
 
 
