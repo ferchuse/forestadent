@@ -63,7 +63,7 @@
 		
 		
 		
-    <title>Nueva Venta</title>
+    <title>Prospectos</title>
     <?php include("../styles.php");?>
 	</head>
   <body>

@@ -114,7 +114,7 @@ function renderCliente(cliente){
 		for (var interaccion of cliente.historial) {
 			historial+= `
 			<tr>
-			<td class="text-center">${interaccion.fecha?interacciones}</td>
+			<td class="text-center">${interaccion.fecha_interacciones}</td>
 			<td class="text-center">${interaccion.tipo_interaccion}</td>
 			<td class="text-center">${interaccion.accion}</td>
 			<td class="text-center">${interaccion.observaciones}</td>
@@ -130,43 +130,43 @@ function renderCliente(cliente){
 
 
 function guardarInteraccion(event){
-event.preventDefault();
-console.log("guardarInteraccion()");
-
-var boton = $(this).find(":submit");
-var icono = boton.find('.fa');
-boton.prop('disabled',true);
-icono.toggleClass('fa-save fa-spinner fa-pulse');
-
-
-$.ajax({
-	url: 'guardar_interaccion.php',
-	method: 'POST',
-	dataType: 'JSON',
-	data:{
-		id_clientes: $('#id_clientes').val(),
-		tipo_interaccion: $('#tipo_interaccion').val(),
-		accion: $('#accion').val(),
-		observaciones: $("#observaciones").val(),
-	}
-	}).done(function(respuesta){
+	event.preventDefault();
+	console.log("guardarInteraccion()");
 	
-	if(respuesta.estatus == "success"){
-		alertify.success('Guardado');
-		$("#modal_interaccion").modal("hide");
-		index++;
-		renderCliente(clientes[index]);
-	}
-	else{
-		
-		alertify.error(respuesta.mensaje);
-	}
-	}).fail(function(xhr, error, ernum){
-	alertify.error("Ocurrio un error:"+ error + ernum );
-	}).always(function(){
-	boton.prop('disabled',false);
+	var boton = $(this).find(":submit");
+	var icono = boton.find('.fa');
+	boton.prop('disabled',true);
 	icono.toggleClass('fa-save fa-spinner fa-pulse');
 	
-});
-
+	
+	$.ajax({
+		url: 'guardar_interaccion.php',
+		method: 'POST',
+		dataType: 'JSON',
+		data:{
+			id_clientes: $('#id_clientes').val(),
+			tipo_interaccion: $('#tipo_interaccion').val(),
+			accion: $('#accion').val(),
+			observaciones: $("#observaciones").val(),
+		}
+		}).done(function(respuesta){
+		
+		if(respuesta.estatus == "success"){
+			alertify.success('Guardado');
+			$("#modal_interaccion").modal("hide");
+			index++;
+			renderCliente(clientes[index]);
+		}
+		else{
+			
+			alertify.error(respuesta.mensaje);
+		}
+		}).fail(function(xhr, error, ernum){
+		alertify.error("Ocurrio un error:"+ error + ernum );
+		}).always(function(){
+		boton.prop('disabled',false);
+		icono.toggleClass('fa-save fa-spinner fa-pulse');
+		
+	});
+	
 }
