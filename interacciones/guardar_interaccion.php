@@ -10,6 +10,8 @@
 	fecha_interacciones = NOW(),
 	tipo_interaccion = '{$_POST['tipo_interaccion']}',
 	accion = '{$_POST['accion']}',
+	fecha_programada = '{$_POST['fecha_programada']}',
+	medio_contacto = '{$_POST['medio_contacto']}',
 	observaciones = '{$_POST['observaciones']}'
 	
 	

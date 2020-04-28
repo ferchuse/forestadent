@@ -55,9 +55,14 @@
 							
 						</form>
 					</div>
-					<div class="ml-auto" hidden>
+					<div class="ml-auto">
 						<button type="button" class="btn btn-success float-right" id="btn_nuevo">
 							<i class="fa fa-plus"></i> Nuevo
+						</button>
+						
+						
+						<button type="button" class="btn btn-info float-right" id="btn_nuevo">
+							<i class="fa fa-edit"></i> Nuevo
 						</button>
 					</div>
 				</div>

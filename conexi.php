@@ -39,7 +39,7 @@
 		if($_SERVER["SERVER_NAME"] != "localhost"){
 			mysqli_query($link, "SET CHARACTER SET utf8") or die("Error en charset UTF8".mysqli_error($link));
 		}
-		
+		// mysqli_query($link, "SET CHARACTER SET utf8") or die("Error en charset UTF8".mysqli_error($link));
 		
 		/*  if (!mysqli_query( $link, $set_local))	
 			{

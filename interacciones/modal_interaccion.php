@@ -30,8 +30,24 @@
 							<option>Cliente</option>
 						</select>
 					</div>
+					
+					<div class="form-group d-none" >
+						<label for="medio_contacto">Método de Envio:</label>
+						<select class="form-control" name="medio_contacto" id="medio_contacto" required>
+							<option value="">Elige..</option>
+							<option>Whatsapp</option>
+							<option>Correo</option>
+						</select>
+					</div>
+					
+					
+					<div class="form-group d-none" >
+						<label for="fecha_programada">Fecha Programada:</label>
+						<input type="datetime-local" class="form-control" name="fecha_programada" id="fecha_programada">
+					</div>
+					
 					<div class="form-group">
-						<label for="unidad_granel">Observaciones:</label>
+						<label for="observaciones">Observaciones:</label>
 						<textarea class="form-control" required name="observaciones" id="observaciones"></textarea>
 					</div>
 				</div>

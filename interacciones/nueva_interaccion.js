@@ -5,6 +5,9 @@ var index = 0;
 $(document).ready( function onLoad(){
 	
 	$('#form_interaccion').submit( guardarInteraccion);
+	$('#form_clientes').submit( guardarCliente);
+	$('#form_editar_cliente').submit( updateCliente);
+	$('#accion').change( changeAccion);
 	
 	
 	getCliente();
@@ -40,6 +43,29 @@ $(document).ready( function onLoad(){
 }); 
 
 
+function changeAccion(event){
+	
+	
+	if($(this).val() == "Llamar Después"){
+		
+		$("#fecha_programada").prop("required", true).focus();
+		$("#fecha_programada").closest(".form-group").removeClass("d-none");
+		
+		$("#medio_contacto").prop("required", false);
+		$("#medio_contacto").closest(".form-group").addClass("d-none");
+	}
+	else{
+		if($(this).val() == "Cotizar"){
+			
+			$("#medio_contacto").prop("required", true).focus();
+			$("#medio_contacto").closest(".form-group").removeClass("d-none");
+			
+			$("#fecha_programada").prop("required", false);
+			$("#fecha_programada").closest(".form-group").addClass("d-none");
+		}
+	}
+	
+}
 // function cargarProductos(parametros){
 // console.log("cargarVenta");
 
@@ -163,6 +189,8 @@ function guardarInteraccion(event){
 			tipo_interaccion: $('#tipo_interaccion').val(),
 			accion: $('#accion').val(),
 			observaciones: $("#observaciones").val(),
+			medio_contacto: $("#medio_contacto").val(),
+			fecha_programada: $("#fecha_programada").val()
 		}
 		}).done(function(respuesta){
 		
@@ -171,6 +199,82 @@ function guardarInteraccion(event){
 			$("#modal_interaccion").modal("hide");
 			index++;
 			renderCliente(clientes[index]);
+			$('#form_interaccion')[0].reset()
+		}
+		else{
+			
+			alertify.error(respuesta.mensaje);
+		}
+		}).fail(function(xhr, error, ernum){
+		alertify.error("Ocurrio un error:"+ error + ernum );
+		}).always(function(){
+		boton.prop('disabled',false);
+		icono.toggleClass('fa-save fa-spinner fa-pulse');
+		
+	});
+	
+}
+
+function guardarCliente(event){
+	event.preventDefault();
+	console.log("guardarCliente()");
+	
+	var form = $(this);
+	var boton = $(this).find(":submit");
+	var icono = boton.find('.fa');
+	boton.prop('disabled',true);
+	icono.toggleClass('fa-save fa-spinner fa-pulse');
+	
+	
+	$.ajax({
+		url: '../clientes/guardar_clientes.php',
+		method: 'POST',
+		dataType: 'JSON',
+		data: form.serialize()
+		}).done(function(respuesta){
+		
+		if(respuesta.estatus == "success"){
+			alertify.success('Guardado');
+			$("#modal_clientes").modal("hide");
+			// index++;
+			// renderCliente(clientes[index]);
+			form[0].reset()
+		}
+		else{
+			
+			alertify.error(respuesta.mensaje);
+		}
+		}).fail(function(xhr, error, ernum){
+		alertify.error("Ocurrio un error:"+ error + ernum );
+		}).always(function(){
+		boton.prop('disabled',false);
+		icono.toggleClass('fa-save fa-spinner fa-pulse');
+		
+	});
+	
+}
+
+function updateCliente(event){
+	event.preventDefault();
+	console.log("guardarCliente()");
+	
+	var form = $(this);
+	var boton = $(this).find(":submit");
+	var icono = boton.find('.fa');
+	boton.prop('disabled',true);
+	icono.toggleClass('fa-save fa-spinner fa-pulse');
+	
+	
+	$.ajax({
+		url: '../clientes/update_clientes.php',
+		method: 'POST',
+		dataType: 'JSON',
+		data: form.serialize()
+		}).done(function(respuesta){
+		
+		if(respuesta.estatus == "success"){
+			alertify.success('Guardado');
+			
 		}
 		else{
 			

@@ -4,28 +4,14 @@
 	$link = Conectarse();
 	$respuesta = Array();
 	
-	$consulta = "INSERT INTO clientes SET 
-	id_clientes = '{$_POST["id_clientes"]}',
-	nombre = '{$_POST["nombre"]}',
-	apellidos = '{$_POST["apellidos"]}',
-	correo = '{$_POST["correo"]}',
-	telefono = '{$_POST["telefono"]}',
+	$consulta = "UPDATE clientes SET 
+	
 	especialidad = '{$_POST["especialidad"]}',
 	estado = '{$_POST["estado"]}',
 	domicilio = '{$_POST["domicilio"]}',
 	datos_extra = '{$_POST["datos_extra"]}'
 	
-	ON DUPLICATE KEY UPDATE 
-	
-	
-	nombre = '{$_POST["nombre"]}',
-	apellidos = '{$_POST["apellidos"]}',
-	correo = '{$_POST["correo"]}',
-	telefono = '{$_POST["telefono"]}',
-	especialidad = '{$_POST["especialidad"]}',
-	estado = '{$_POST["estado"]}',
-	domicilio = '{$_POST["domicilio"]}',
-	datos_extra = '{$_POST["datos_extra"]}'
+	WHERE 	id_clientes = '{$_POST["id_clientes"]}'
 	
 	";
 	$result = mysqli_query($link, $consulta);
