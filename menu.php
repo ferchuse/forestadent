@@ -50,7 +50,7 @@
 				}
 				elseif($_COOKIE["permiso_usuarios"] == "vendedor"){?>
 				<li class="nav-item">
-					<a class="nav-link" href="../interacciones/index.php">
+					<a class="nav-link" href="../prospectos/index.php">
 						<i class="fas fa-user"></i> Prospectos
 					</a>
 				</li>
