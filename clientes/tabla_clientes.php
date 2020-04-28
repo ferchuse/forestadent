@@ -60,9 +60,10 @@
 			?>
 			<tr class="text-center">
 				<td>
+					<a target="_blank" href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
 						<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
-						
-					</td>
+					</a>
+				</td>
 				<td><?php echo $cliente["estado"]; ?></td>
 				<td><?php echo $cliente["telefono"]; ?></td>
 				<td><?php echo $cliente["correo"]; ?></td>

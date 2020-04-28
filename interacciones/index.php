@@ -93,7 +93,7 @@
 						<div class="card-body">
 							<form id="form_editar_cliente" autocomplete="off">
 								<input type="hidden"  id="index" value="0">
-								<input type="hidden"  name="id_clientes" id="id_clientes" >
+								<input type="hidden"  name="id_clientes" id="id_clientes" value="<?= $_GET["id_clientes"]?>">
 								<div class="form-group">
 									<label for="">Nombre:</label>
 									<input  class="form-control"  name="nombre" id="nombre" readonly >

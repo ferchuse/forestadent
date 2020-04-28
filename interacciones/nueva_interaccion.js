@@ -123,8 +123,10 @@ function getContacts(token){
 function getCliente(){
 	
 	$.ajax({
-		"url":"siguiente_cliente.php"
-		
+		"url":"siguiente_cliente.php",
+		data: {
+			"id_clientes" : $("#id_clientes").val()
+		}
 		}).done(function(respuesta){
 		clientes = respuesta.clientes;
 		
