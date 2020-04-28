@@ -29,7 +29,7 @@
 	<div class="modal-dialog modal-lg">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h3 class="modal-title text-center">Estado de Cuenta <span id="nombre_historial"></span></h3>
+				<h3 class="modal-title text-center">Historial <span id="nombre_historial"></span></h3>
 				<button type="button" class="close d-print-none" data-dismiss="modal">&times;</button>
 			</div>
 			<div class="modal-body table-responsive">

@@ -55,10 +55,11 @@
 </pre>
 
 <table class="table table-hover" id="tabla_registros">
-	<thead class=" text-white">
+	<thead class="bg-secondary text-white">
 		<tr>
 			<th class="text-center">
-				<a class="sort" href="#!" data-columna="nombre">Nombre</a> 
+				Nombre
+				
 			</th>
 			
 			
@@ -72,7 +73,7 @@
 			?>
 			<tr class="text-center">
 				<td>
-					<a href="interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
+					<a href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
 						<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
 					</a>
 				</td>
@@ -85,7 +86,7 @@
 	<tfoot >
 		<tr class="text-center bg-info text-white h5">
 			
-			<td class="text-right"><?php echo count($lista_clientes) ; ?> Registros</td>
+			<td class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
 			
 		</tr>
 	</tfoot>

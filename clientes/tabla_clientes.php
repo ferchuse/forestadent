@@ -59,7 +59,10 @@
 				$total_deuda+=$cliente["saldo"];
 			?>
 			<tr class="text-center">
-				<td><?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?></td>
+				<td>
+						<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
+						
+					</td>
 				<td><?php echo $cliente["estado"]; ?></td>
 				<td><?php echo $cliente["telefono"]; ?></td>
 				<td><?php echo $cliente["correo"]; ?></td>

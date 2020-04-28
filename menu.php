@@ -54,6 +54,11 @@
 						<i class="fas fa-user"></i> Prospectos
 					</a>
 				</li>
+				<li class="nav-item ">
+					<a class="nav-link" href="../reportes/historial.php">
+						<i class="fas fa-chart-bar"></i> Reportes
+					</a>
+				</li>
 				<?php	
 				}
 			?>
