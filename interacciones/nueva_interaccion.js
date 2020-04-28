@@ -150,6 +150,8 @@ function renderCliente(cliente){
 	$("#correo").html(cliente.correo).attr("href", "mailto:"+ cliente.correo);
 	$("#estado").val(cliente.estado);
 	$("#especialidad").val(cliente.especialidad);
+	$("#datos_extra").val(cliente.datos_extra);
+	$("#domicilio").val(cliente.domicilio);
 	
 	$("#tabla_historial tbody").html("");
 	
