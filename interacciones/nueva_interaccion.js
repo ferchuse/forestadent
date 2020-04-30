@@ -125,8 +125,8 @@ function changeAccion(event){
 			$("#fecha_programada").closest(".form-group").addClass("d-none");
 		}
 		else{
-			
-			
+			$("#medio_contacto").prop("required", false);
+			$("#fecha_programada").prop("required", false);
 		}
 	}
 	
