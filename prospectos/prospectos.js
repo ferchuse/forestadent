@@ -15,7 +15,7 @@ function onLoad() {
 	
 	$("#form_filtros").submit(listarClientes);
 	
-	// $("#form_filtros").submit();
+	$("#form_filtros").submit();
 	
 	
 	$(".buscar").keyup(buscarFila);

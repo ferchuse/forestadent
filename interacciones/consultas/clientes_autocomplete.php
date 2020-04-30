@@ -18,7 +18,9 @@
 	telefono,
 	estado,
 	correo,
-	especialidad
+	especialidad,
+	domicilio,
+	datos_extra
 	
 	FROM clientes
 	WHERE nombre LIKE '%$query%' ORDER BY $campo LIMIT 50 ";

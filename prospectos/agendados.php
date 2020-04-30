@@ -32,7 +32,7 @@
 		<div class="container d-print-none">
 			<div class="row">
 				<div class="col-12 border-bottom mb-3">
-					<h3 class="text-center">Prospectos <span class="badge badge-success" id="contar_registros">0</span></h3>
+					<h3 class="text-center">Agendados del Dia <?= date("d/m/Y")?> <span class="badge badge-success" id="contar_registros">0</span></h3>
 				</div>
 				
 				<div class="row col-12 mb-4">

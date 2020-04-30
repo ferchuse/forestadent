@@ -9,6 +9,13 @@
 	$consulta = "SELECT
 	* FROM vendedores
 	";
+	
+	
+	if($_COOKIE["permiso_usuarios"] == "vendedor"){
+		$consulta .= " WHERE  id_vendedores = '{$_COOKIE["id_usuarios"]}'";
+		
+	}
+	
 	$result = mysqli_query($link, $consulta);
 	
 	if($result){
@@ -27,7 +34,7 @@
 
 <?php 
 	
-
+	
 	foreach($vendedores as $vendedor){
 		$historial = [];
 		$consulta = "SELECT
@@ -38,6 +45,8 @@
 		AND DATE(fecha_interacciones) BETWEEN '{$_GET["fecha_inicial"]}'
 		AND '{$_GET["fecha_final"]}'
 		";
+		
+		
 		$result = mysqli_query($link, $consulta);
 		
 		if($result){
@@ -60,7 +69,7 @@
 		else{
 			
 		?>
-	
+		
 		<table class="table table-striped table-hover">
 			<thead>
 				<tr class="success">
@@ -68,6 +77,7 @@
 					<th>Fecha</th>
 					<th>Tipo de Interacción</th>
 					<th>Accion</th>
+					<th>Fecha Programada</th>
 					<th>Observaciones</th>
 				</tr>
 			</thead>
@@ -79,10 +89,22 @@
 						
 					?>
 					<tr>
-						<td><?= $fila["nombre"]." ".$fila["apellidos"] ?></td> 
+						<td>
+							<a target="_blank" href="../interacciones/index.php?id_clientes=<?= $fila["id_clientes"]?>">
+								<?php echo $fila["apellidos"]. " " . $fila["nombre"]; ?>
+							</a>
+						</td> 
 						<td><?= $fila["fecha_interacciones"] ?></td> 
 						<td><?= $fila["tipo_interaccion"] ?></td> 
 						<td><?= $fila["accion"] ?></td> 
+						<td>
+							<?php 
+						if($fila["fecha_programada"] != ""){
+							echo date("d/m/Y H:i", strtotime($fila["fecha_programada"])); 
+						}
+					?>
+							
+							</td> 
 						<td><?= $fila["observaciones"] ?></td> 
 					</tr>
 					<?php

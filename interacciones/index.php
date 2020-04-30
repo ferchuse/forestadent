@@ -43,7 +43,7 @@
 			margin-bottom: 10px;
 			}
 			
-			.tab-pane {
+			#div_historial {
 			display: block;
 			overflow: auto;
 			overflow-x: hidden;
@@ -74,7 +74,20 @@
 				<div class="col-sm-4" >
 					<div class="form-group">
 						<input  class="form-control input-lg"  type="search" id="buscar_cliente" placeholder="Buscar Cliente" >
+					</div>
+				</div>
+				<div class="col-sm-3" >
+					<div class="form-group" >
 						
+						<select class="form-control" name="ultima_accion" id="ultima_accion" required>
+							<option value="">Elige..</option>
+							<option>Sin Interacción</option>
+							<option>Prospecto</option>
+							<option>Cotizar</option>
+							<option selected>Llamar Después</option>
+							<option>No llamar</option>
+							<option>Cliente</option>
+						</select>
 					</div>
 				</div>
 				<div class="col-sm-2" >
@@ -86,27 +99,7 @@
 			</div>
 			<div class="row">
 				
-				<div class="col-sm-2  px-1" >
-					<form id="form_filtros">
-						<div class="form-group" >
-							<label for="tipo_interaccion">Estatus:</label>
-							<select class="form-control" name="ultima_accion" id="ultima_accion" required>
-								<option value="">Elige..</option>
-								<option>Sin Interacción</option>
-								<option>Prospecto</option>
-								<option>Cotizar</option>
-								<option selected>Llamar Después</option>
-								<option>No llamar</option>
-								<option>Cliente</option>
-							</select>
-						</div>
-						
-						<div id="lista_clientes">
-							
-						</div>
-					</form>
-					
-				</div>
+				
 				<div class="col-sm-3  px-2" >
 					<div class="card  mb-3">
 						<div class="card-header text-white bg-info">	<legend class="text-center">Datos de Contacto</legend>
@@ -145,8 +138,8 @@
 								</div>
 								<div class="modal-footer">
 									
-									<button type="submit" class="btn btn-success" >
-										<i class="fa fa-save"></i> Guardar
+									<button type="submit" class="btn btn-info" >
+										<i class="fa fa-save"></i> Guardar Cliente
 									</button>
 								</div>
 							</form>
@@ -156,49 +149,40 @@
 					
 					
 				</div>
-				<div class="col-sm-6">
-					
-					<legend class="text-center">Historial </legend>
-					<div class="table-responsive">
-						<table  id="tabla_historial" class="table table-hover">
-							<thead>
-								<tr>
-									<th class="text-center">Fecha</th>
-									<th class="text-center">Tipo Interacción</th>
-									<th class="text-center">Acción</th>
-									<th class="text-center">Observaciones</th>
-								</tr> 
-							</thead>
-							<tbody>
+				<div class="col-sm-8">
+					<div id="div_historial">
+						
+						<legend class="text-center">Historial </legend>
+						<div class="table-responsive">
+							<table  id="tabla_historial" class="table table-hover">
+								<thead>
+									<tr>
+										<th class="text-center">Fecha</th>
+										<th class="text-center">Tipo Interacción</th>
+										<th class="text-center">Acción</th>
+										<th class="text-center">Observaciones</th>
+									</tr> 
+								</thead>
+								<tbody>
+									
+									
+									
+								</tbody>
 								
-								
-								
-							</tbody>
-							
-						</table>
+							</table>
+						</div>
 					</div>
+					<button class="btn btn-success btn-lg float-right" type="button" data-toggle="modal" data-target="#modal_interaccion">
+						Guardar Interacción
+						<i class="fas fa-arrow-right"></i>
+					</button>
+					
 				</div>
-				
-				
 			</div>
 			
 			
 			<section id="footer">
-				<button hidden class="btn btn-secondary btn-lg" id="btn_listas" type="button">
-					Listas
-					<i class="fas fa-list"></i>
-				</button>
-				<button hidden class="btn btn-secondary btn-lg" id="btn_contactos" type="button">
-					Contactos
-					<i class="fas fa-users"></i>
-				</button>
 				
-				<div class="col-sm-3 offset-sm-9 text-right">
-					<button class="btn btn-success btn-lg btn-block" type="button" data-toggle="modal" data-target="#modal_interaccion">
-						Siguiente
-						<i class="fas fa-arrow-right"></i>
-					</button>
-				</div>
 				
 			</section>
 			

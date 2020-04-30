@@ -30,7 +30,7 @@ $(document).ready( function onLoad(){
 	
 	
 	
-	// getCliente();
+	getCliente();
 	
 	// getMailingLists("1000.0093a5e85fa7b77b3f67301058235327.ba4cdf8af899085bd7f7c09b5c3f051a");
 	
@@ -124,6 +124,10 @@ function changeAccion(event){
 			$("#fecha_programada").prop("required", false);
 			$("#fecha_programada").closest(".form-group").addClass("d-none");
 		}
+		else{
+			
+			
+		}
 	}
 	
 }
@@ -211,8 +215,8 @@ function renderCliente(cliente){
 	$("#correo").html(cliente.correo).attr("href", "mailto:"+ cliente.correo);
 	$("#estado").val(cliente.estado);
 	$("#especialidad").val(cliente.especialidad);
-	$("#datos_extra").val(cliente.datos_extra);
-	$("#domicilio").val(cliente.domicilio);
+	$("#datos_extra").html(cliente.datos_extra);
+	$("#domicilio").html(cliente.domicilio);
 	
 	$("#tabla_historial tbody").html("");
 	
@@ -263,7 +267,8 @@ function guardarInteraccion(event){
 			alertify.success('Guardado');
 			$("#modal_interaccion").modal("hide");
 			index++;
-			renderCliente(clientes[index]);
+			window.location.reload("true");
+			// renderCliente(clientes[index]);
 			$('#form_interaccion')[0].reset()
 		}
 		else{

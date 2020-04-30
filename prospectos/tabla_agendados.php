@@ -57,8 +57,10 @@
 <table class="table table-hover" id="tabla_registros">
 	<thead class="bg-secondary text-white">
 		<tr>
-			<th class="text-center">Nombre</th>
-			<th class="text-center">Fecha Programada</th>
+			<th class="text-center">
+				Nombre
+				
+			</th>
 			
 			
 		</tr>
@@ -75,13 +77,6 @@
 						<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
 					</a>
 				</td>
-				<td>
-					<?php 
-						if($cliente["fecha_programada"] != ""){
-							echo date("d/m/Y H:i", strtotime($cliente["fecha_programada"])); 
-						}
-					?>
-				</td>
 				
 			</tr>
 			<?php
@@ -91,8 +86,8 @@
 	<tfoot >
 		<tr class="text-center bg-info text-white h5">
 			
-			<td colspan="2" class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
+			<td class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
 			
 		</tr>
 	</tfoot>
-	</table>
+</table>
