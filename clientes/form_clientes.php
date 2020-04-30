@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label for="estado">Estado</label>
-						<select  name="estado">
+						<select  name="estado" class="form-control">
 							<option >Aguascalientes</option>
 							<option >Baja California</option>
 							<option >Baja California Sur</option>
