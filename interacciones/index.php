@@ -76,7 +76,7 @@
 						<input  class="form-control input-lg"  type="search" id="buscar_cliente" placeholder="Buscar Cliente" >
 					</div>
 				</div>
-				<div class="col-sm-3" >
+				<div class="col-sm-3" hidden >
 					<div class="form-group" >
 						
 						<select class="form-control" name="ultima_accion" id="ultima_accion" required>

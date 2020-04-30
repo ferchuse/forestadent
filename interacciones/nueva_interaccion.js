@@ -267,7 +267,8 @@ function guardarInteraccion(event){
 			alertify.success('Guardado');
 			$("#modal_interaccion").modal("hide");
 			index++;
-			window.location.reload("true");
+			window.top.close();
+			// window.location.reload("true");
 			// renderCliente(clientes[index]);
 			$('#form_interaccion')[0].reset()
 		}
