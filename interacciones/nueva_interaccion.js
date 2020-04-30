@@ -9,8 +9,28 @@ $(document).ready( function onLoad(){
 	$('#form_editar_cliente').submit( updateCliente);
 	$('#accion').change( changeAccion);
 	
+	$("#form_filtros").submit(listarClientes);
+	$("#ultima_accion").change(function(){
+		
+		$("#form_filtros").submit();
+		
+	});
 	
-	getCliente();
+	$("#form_filtros").submit();
+	
+	
+	
+	$("#lista_clientes").on("click", ".nombre_cliente", function(){
+		
+		$("#id_clientes").val($(this).data("id_clientes"));
+		
+		getCliente();
+		
+	});
+	
+	
+	
+	// getCliente();
 	
 	// getMailingLists("1000.0093a5e85fa7b77b3f67301058235327.ba4cdf8af899085bd7f7c09b5c3f051a");
 	
@@ -42,6 +62,47 @@ $(document).ready( function onLoad(){
 	
 }); 
 
+
+function listarClientes(event) {
+	event.preventDefault();
+	boton = $(this).find(":submit");
+	icono = boton.find("i");
+	
+	boton.prop("disabled", true);
+	icono.toggleClass("fa-search fa-spinner fa-spin");
+	
+	
+	$.ajax({
+		"url": "../prospectos/tabla_prospectos.php",
+		"data": $("#form_filtros").serialize()
+	}).done(onLoadClientes);
+}
+
+
+function onLoadClientes(respuesta) {
+	$("#lista_clientes").html(respuesta);
+	
+	
+	// $(".nombre_cliente").click(respuesta);
+	
+	
+	
+	// $('.buscar').prop("disabled", false);
+	
+	// $('.btn_editar').click(editarCliente);
+	// $('.btn_historial').click(cargarHistorial);
+	// $('.sort').click(ordenarTabla);
+	
+	
+	
+	
+	
+	// contarRegistros("tabla_registros");
+	
+	// boton.prop("disabled", false);
+	// icono.toggleClass("fa-search fa-spinner fa-spin");
+	
+}
 
 function changeAccion(event){
 	

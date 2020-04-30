@@ -86,7 +86,28 @@
 			</div>
 			<div class="row">
 				
-				<div class="col-sm-4  px-2" >
+				<div class="col-sm-2  px-1" >
+					<form id="form_filtros">
+						<div class="form-group" >
+							<label for="tipo_interaccion">Estatus:</label>
+							<select class="form-control" name="ultima_accion" id="ultima_accion" required>
+								<option value="">Elige..</option>
+								<option>Sin Interacción</option>
+								<option>Prospecto</option>
+								<option>Cotizar</option>
+								<option selected>Llamar Después</option>
+								<option>No llamar</option>
+								<option>Cliente</option>
+							</select>
+						</div>
+						
+						<div id="lista_clientes">
+							
+						</div>
+					</form>
+					
+				</div>
+				<div class="col-sm-3  px-2" >
 					<div class="card  mb-3">
 						<div class="card-header text-white bg-info">	<legend class="text-center">Datos de Contacto</legend>
 						</div>
@@ -135,25 +156,27 @@
 					
 					
 				</div>
-				<div class="col-sm-8">
+				<div class="col-sm-6">
 					
 					<legend class="text-center">Historial </legend>
-					<table  id="tabla_historial" class="table table-hover">
-						<thead>
-							<tr>
-								<th class="text-center">Fecha</th>
-								<th class="text-center">Tipo Interacción</th>
-								<th class="text-center">Acción</th>
-								<th class="text-center">Observaciones</th>
-							</tr> 
-						</thead>
-						<tbody>
+					<div class="table-responsive">
+						<table  id="tabla_historial" class="table table-hover">
+							<thead>
+								<tr>
+									<th class="text-center">Fecha</th>
+									<th class="text-center">Tipo Interacción</th>
+									<th class="text-center">Acción</th>
+									<th class="text-center">Observaciones</th>
+								</tr> 
+							</thead>
+							<tbody>
+								
+								
+								
+							</tbody>
 							
-							
-							
-						</tbody>
-						
-					</table>
+						</table>
+					</div>
 				</div>
 				
 				
@@ -188,4 +211,4 @@
 		<script src="nueva_interaccion.js?<?php echo date("Ymd-his")?>"></script>
 		
 	</body>
-</html>								
+</html>									

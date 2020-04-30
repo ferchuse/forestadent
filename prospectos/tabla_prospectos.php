@@ -54,7 +54,9 @@
 	<?php echo $consulta; ?>
 </pre>
 
-<table class="table table-hover" id="tabla_registros">
+
+
+<table  class="table table-hover" id="tabla_registros">
 	<thead class="bg-secondary text-white">
 		<tr>
 			<th class="text-center">
@@ -73,7 +75,7 @@
 			?>
 			<tr class="text-center">
 				<td>
-					<a href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
+					<a class="nombre_cliente" data-id_clientes="<?= $cliente["id_clientes"]?>" href="#../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
 						<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
 					</a>
 				</td>
