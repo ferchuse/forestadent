@@ -54,45 +54,140 @@
 	<?php echo $consulta; ?>
 </pre>
 
-<table class="table table-hover" id="tabla_registros">
-	<thead class="bg-secondary text-white">
-		<tr>
-			<th class="text-center">Nombre</th>
-			<th class="text-center">Fecha Programada</th>
-			
-			
-		</tr>
-	</thead>
-	<tbody>
-		<?php
-			$total_deuda=0;
-			foreach ($lista_clientes as $i => $cliente) {
-				$total_deuda+=$cliente["saldo"];
-			?>
-			<tr class="text-center">
-				<td>
-					<a target="_blank" href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
-						<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
-					</a>
-				</td>
-				<td>
-					<?php 
-						if($cliente["fecha_programada"] != ""){
-							echo date("d/m/Y H:i", strtotime($cliente["fecha_programada"])); 
-						}
-					?>
-				</td>
+
+<?php
+	if($_GET["ultima_accion"] == "Llamar Después"){
+	?>
+	<table class="table table-hover" id="tabla_registros">
+		<thead class="bg-secondary text-white">
+			<tr>
+				<th class="text-center">Nombre</th>
+				<th class="text-center">Fecha Programada</th>
+				
 				
 			</tr>
+		</thead>
+		<tbody>
 			<?php
-			}
-		?>
-	</tbody>
-	<tfoot >
-		<tr class="text-center bg-info text-white h5">
-			
-			<td colspan="2" class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
-			
-		</tr>
-	</tfoot>
+				
+				foreach ($lista_clientes as $i => $cliente) {
+					
+				?>
+				<tr class="text-center">
+					<td>
+						<a target="_blank" href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
+							<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
+						</a>
+					</td>
+					<td>
+						<?php 
+							if($cliente["fecha_programada"] != ""){
+								echo date("d/m/Y H:i", strtotime($cliente["fecha_programada"])); 
+							}
+						?>
+					</td>
+					
+				</tr>
+				<?php
+				}
+			?>
+		</tbody>
+		<tfoot >
+			<tr class="text-center bg-info text-white h5">
+				
+				<td colspan="2" class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
+				
+			</tr>
+		</tfoot>
 	</table>
+	
+	<?php
+	}
+	elseif($_GET["ultima_accion"] == "Cotizar"){
+	?>
+	<table class="table table-hover" id="tabla_registros">
+		<thead class="bg-secondary text-white">
+			<tr>
+				<th class="text-center">Nombre</th>
+				<th class="text-center">Medio de Contacto</th>				
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				
+				foreach ($lista_clientes as $i => $cliente) {
+				
+				?>
+				<tr class="text-center">
+					<td>
+						<a target="_blank" href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
+							<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
+						</a>
+					</td>
+					<td>
+						<?php 
+							
+							echo ($cliente["medio_contacto"]); 
+							
+						?>
+					</td>
+					
+				</tr>
+				<?php
+				}
+			?>
+		</tbody>
+		<tfoot >
+			<tr class="text-center bg-info text-white h5">
+				
+				<td colspan="2" class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
+				
+			</tr>
+		</tfoot>
+	</table>
+	
+	
+	<?php
+	}
+	else{
+		
+	?>
+	
+	<table class="table table-hover" id="tabla_registros">
+		<thead class="bg-secondary text-white">
+			<tr>
+				<th class="text-center">Nombre</th>
+							
+			</tr>
+		</thead>
+		<tbody>
+			<?php
+				
+				foreach ($lista_clientes as $i => $cliente) {
+				
+				?>
+				<tr class="text-center">
+					<td>
+						<a target="_blank" href="../interacciones/index.php?id_clientes=<?= $cliente["id_clientes"]?>">
+							<?php echo $cliente["apellidos"]. " " . $cliente["nombre"]; ?>
+						</a>
+					</td>
+				
+					
+				</tr>
+				<?php
+				}
+			?>
+		</tbody>
+		<tfoot >
+			<tr class="text-center bg-info text-white h5">
+				
+				<td colspan="2" class="text-center"><?php echo count($lista_clientes) ; ?> Registros</td>
+				
+			</tr>
+		</tfoot>
+	</table>
+	
+	<?php
+	}
+?>

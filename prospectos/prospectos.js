@@ -1,6 +1,7 @@
 
 var boton, icono;
 
+window.onfocus = listarClientes;
 
 function onLoad() {
 	console.log("onLoad");
@@ -10,6 +11,12 @@ function onLoad() {
 		
 		$("#modal_clientes").modal("show");
 		
+	});
+	
+	
+	$("#ultima_accion").change(function(){
+		
+		$("#form_filtros").submit();
 	});
 	
 	
@@ -43,6 +50,8 @@ function listarClientes(event) {
 
 function alCargar(respuesta) {
 	$("#lista_registros").html(respuesta);
+	
+	// $("#tabla_registros tbody tr").first().addClass("text-light bg-info")
 	
 	$('.buscar').prop("disabled", false);
 	

@@ -1,5 +1,7 @@
 
-$("#form_reportes").submit(listarComisiones);
+window.onfocus = listarHistorial
+
+$("#form_reportes").submit(listarHistorial);
 
 $(".btn_comisiones").click(function(){
 	$("#filtro_id_vendedores").val($(this).data("id_vendedores"));
@@ -8,9 +10,9 @@ $(".btn_comisiones").click(function(){
 	$("#lista_ventas").html("");
 });
 
-function listarComisiones(event){
+function listarHistorial(event){
 	event.preventDefault();
-	console.log("listarComisiones()");
+	console.log("listarHistorial()");
 	let $boton = $(this).find(":submit");
 	let $icono = $(this).find(".fas");
 	

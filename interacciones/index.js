@@ -40,32 +40,7 @@ function listarRegistros(){
 		
 	});
 }
-function convertirASalida(event){
-	console.log("convertirASalida");
-	
-	var id_registro = $(this).data('id_registro');
-	
-	
-	$.ajax({
-		url: 'convertir_a_salida.php',
-		method: 'GET',
-		data: {id_ventas: id_registro
-			
-		}
-		}).done(function(respuesta){
-		if(respuesta.estatus == "success"){
-			window.location.href="../inventarios/nuevo_movimiento.php?tipo_movimiento=SALIDA&folio="+ respuesta.folio;
-			alertify.success(respuesta.mensaje);
-		}
-		else{
-			alertify.error(respuesta.mensaje);
-			
-		}
-		}).always(function (){
-		
-		
-	});
-}
+
 
 function cambiarEstatus(event){
 	console.log("cambiarEstatus");

@@ -90,12 +90,7 @@
 						</select>
 					</div>
 				</div>
-				<div class="col-sm-2" >
-					<button class="btn btn-success " type="button" data-toggle="modal" data-target="#modal_clientes">
-						<i class="fas fa-plus"></i>
-						Nuevo Cliente
-					</button>
-				</div>
+				
 			</div>
 			<div class="row">
 				
@@ -150,7 +145,7 @@
 					
 				</div>
 				<div class="col-sm-8">
-					<div id="div_historial">
+					<div id="div_historial" class=" mb-4" >
 						
 						<legend class="text-center">Historial </legend>
 						<div class="table-responsive">
@@ -173,8 +168,9 @@
 						</div>
 					</div>
 					<button class="btn btn-success btn-lg float-right" type="button" data-toggle="modal" data-target="#modal_interaccion">
+						<i class="fa fa-save"></i>
 						Guardar Interacción
-						<i class="fas fa-arrow-right"></i>
+						
 					</button>
 					
 				</div>

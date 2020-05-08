@@ -3,6 +3,8 @@
 	$link = Conectarse();
 
 	
+	$fecha_programada = $_POST['fecha_programada'] == "" ? "" : $_POST['fecha_programada'];
+	
 	$insert = "INSERT INTO interacciones SET
 	
 	id_vendedores = '{$_COOKIE["id_usuarios"]}',
@@ -10,7 +12,7 @@
 	fecha_interacciones = NOW(),
 	tipo_interaccion = '{$_POST['tipo_interaccion']}',
 	accion = '{$_POST['accion']}',
-	fecha_programada = '{$_POST['fecha_programada']}',
+	fecha_programada = '$fecha_programada',
 	medio_contacto = '{$_POST['medio_contacto']}',
 	observaciones = '{$_POST['observaciones']}'
 	

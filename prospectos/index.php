@@ -58,17 +58,18 @@
 							</div>
 							
 							
-							<button type="submit" class="btn btn-primary" >
+							<button type="submit" class="btn btn-primary d-none" >
 								<i class="fa fa-search"></i> Buscar
 							</button>
 							
 						</form>
 					</div>
-					<div class="ml-auto d-none">
-						<button type="button" class="btn btn-success float-right" id="btn_nuevo">
-							<i class="fa fa-plus"></i> Nuevo
+					
+					<div class="col-sm-2" >
+						<button class="btn btn-success " type="button" data-toggle="modal" data-target="#modal_clientes">
+							<i class="fas fa-plus"></i>
+							Nuevo Cliente
 						</button>
-						
 					</div>
 				</div>
 				

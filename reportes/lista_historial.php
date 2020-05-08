@@ -77,7 +77,6 @@
 					<th>Fecha</th>
 					<th>Tipo de Interacción</th>
 					<th>Accion</th>
-					<th>Fecha Programada</th>
 					<th>Observaciones</th>
 				</tr>
 			</thead>
@@ -94,17 +93,31 @@
 								<?php echo $fila["apellidos"]. " " . $fila["nombre"]; ?>
 							</a>
 						</td> 
-						<td><?= $fila["fecha_interacciones"] ?></td> 
-						<td><?= $fila["tipo_interaccion"] ?></td> 
-						<td><?= $fila["accion"] ?></td> 
+						<td><?= date("d/m/Y H:i", strtotime($fila["fecha_interacciones"]));?></td> 
+						<td>
+							<?php
+								
+								echo $fila["tipo_interaccion"];
+								
+								
+								
+							?>
+						</td> 
 						<td>
 							<?php 
-						if($fila["fecha_programada"] != ""){
-							echo date("d/m/Y H:i", strtotime($fila["fecha_programada"])); 
-						}
-					?>
+								
+								echo $fila["accion"];
+								
+								if($fila["accion"] == "Llamar Después"){
+									echo "<br> <b>Programada: </b>".date("d/m/Y H:i", strtotime($fila["fecha_programada"])); 
+								}
+								
+								if($fila["accion"] == "Cotizar"){
+									echo "<br> <b>Por: ".$fila["medio_contacto"]."</b>"; 
+								}
+							?>
 							
-							</td> 
+						</td> 
 						<td><?= $fila["observaciones"] ?></td> 
 					</tr>
 					<?php
