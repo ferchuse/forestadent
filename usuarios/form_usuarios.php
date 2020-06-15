@@ -26,7 +26,7 @@
 								<label for="permiso_usuarios" class="text-center">Permisos: </label>
 								<select class="form-control" name="permiso_usuarios" id="permiso_usuarios" required>
 									<option value="">Elije ...</option>
-									<option value="administrador">Administrador</option>
+									<option selected value="administrador">Administrador</option>
 									<option value="Vendedor">Vendedor</option>
 									<option value="categorias">Categorías</option>
 								</select>
