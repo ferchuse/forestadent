@@ -1,1 +1,1 @@
-<?php session_start();if (isset($_COOKIE['id_usuarios'])) {}else{	header("location:../login/index.php");}?>
+<?php 	if($_SERVER["SERVER_NAME"] == "localhost"){		$url = "location:../login/index.php?retorno=".$_SERVER['PHP_SELF'];	}	else{		$url = "location:https://micrositio.mx/forestadent/login/index.php?retorno=".$_SERVER['PHP_SELF'];	}	if (!isset($_COOKIE['id_usuarios'])) {		header($url);	}	?>
