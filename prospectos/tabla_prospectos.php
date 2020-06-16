@@ -38,7 +38,7 @@
 	
 	
 	$consulta.="
-	ORDER BY fecha_programada ASC LIMIT 50
+	ORDER BY fecha_programada ASC LIMIT 500
 	#{$_GET["sort"]} {$_GET["order"]}
 	";
 	

@@ -1,7 +1,6 @@
 
 var boton, icono;
 
-window.onfocus = listarClientes;
 
 function onLoad() {
 	console.log("onLoad");
@@ -11,12 +10,6 @@ function onLoad() {
 		
 		$("#modal_clientes").modal("show");
 		
-	});
-	
-	
-	$("#ultima_accion").change(function(){
-		
-		$("#form_filtros").submit();
 	});
 	
 	
@@ -33,7 +26,6 @@ function onLoad() {
 	
 }
 function listarClientes(event) {
-	console.log("listarClientes()")
 	event.preventDefault();
 	boton = $(this).find(":submit");
 	icono = boton.find("i");
@@ -43,7 +35,7 @@ function listarClientes(event) {
 	
 	
 	$.ajax({
-		"url": "tabla_prospectos.php",
+		"url": "tabla_clientes.php",
 		"data": $("#form_filtros").serialize()
 	}).done(alCargar);
 }
@@ -52,15 +44,29 @@ function listarClientes(event) {
 function alCargar(respuesta) {
 	$("#lista_registros").html(respuesta);
 	
-	// $("#tabla_registros tbody tr").first().addClass("text-light bg-info")
-	
 	$('.buscar').prop("disabled", false);
 	
 	$('.btn_editar').click(editarCliente);
 	$('.btn_historial').click(cargarHistorial);
 	$('.sort').click(ordenarTabla);
 	
+	$('.btn_cargos').click( function () {
+		$('#modal_cargos').modal('show');
+		$('#cargos_id_clientes').val($(this).data('id_registro'));
+		$('#saldo_anterior').val($(this).data('saldo'));
+		$('#tipo').val("cargos");
+		$("#titulo").text("Cargo");
+		
+	});
 	
+	$('.btn_abonos').click(function () {
+		$('#modal_cargos').modal('show');
+		$('#cargos_id_clientes').val($(this).data('id_registro'));
+		$('#saldo_anterior').val($(this).data('saldo'));
+		$('#tipo').val("abonos");
+		$('#titulo').text("Abono");
+		
+	});
 	
 	
 	
@@ -215,7 +221,7 @@ function editarCliente() {
 
 
 function guardarCliente() {
-	console.log("guardarCliente()");
+	
 	event.preventDefault();
 	
 	let boton = $(this).find(":submit");
@@ -232,7 +238,7 @@ function guardarCliente() {
 		
 		}).done(function (respuesta) {
 		console.log("respuesta", respuesta);
-		if (respuesta.estatus == "success") {
+		if (respuesta.status == "success") {
 			
 			alertify.success(respuesta.mensaje);
 			$("#modal_clientes").modal("hide");
