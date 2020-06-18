@@ -19,6 +19,10 @@
 						<input  class="form-control" required  name="nombre"  >
 					</div>
 					<div class="form-group">
+						<label for="correo">Correo</label>
+						<input class="form-control" type="email"  name="correo" required id="correo" >			
+					</div>
+					<div class="form-group">
 						<label for="telefono">Teléfono:</label>
 						<input class="form-control" type="tel" required  name="telefono" >			
 					</div>

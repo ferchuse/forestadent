@@ -19,6 +19,8 @@ function onLoad() {
 		$("#form_filtros").submit();
 	});
 	
+	$("#correo").blur(buscarCorreo);
+	
 	
 	$("#form_filtros").submit(listarClientes);
 	
@@ -126,6 +128,37 @@ function cargarHistorial() {
 		boton.prop("disabled", false);
 		icono.toggleClass("fa-history fa-spinner fa-spin");
 		
+	});
+	
+	
+}
+function buscarCorreo() {
+	var correo = $(this).val();
+	$(this).addClass("cargando");
+	
+	$.ajax({
+		url: "../funciones/fila_select.php",
+		data: {
+			"tabla": "clientes",
+			"id_campo": "correo",
+			"id_valor": correo
+		}
+		
+		}).done(function (respuesta) {
+		if(respuesta.encontrado > 0){
+			
+				alertify.error("El correo ya esta registrado");
+		}
+		
+		$("#correo").focus();
+		
+		
+		
+		}).fail(function (xht, error, errnum) {
+		
+		alertify.error("Error", errnum);
+		}).always(function () {
+		$(this).removeClass("cargando");
 	});
 	
 	
