@@ -14,7 +14,10 @@
 	clientes
 	WHERE 1 
 	";
-	
+	if($_GET["id_vendedores"] != ""){
+		
+		$consulta.=" AND clientes.id_vendedores = '{$_GET["id_vendedores"]}'	";
+		}
 	
 	$consulta.="
 	ORDER BY

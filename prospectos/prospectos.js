@@ -20,6 +20,7 @@ function onLoad() {
 	});
 	
 	$("#correo").blur(buscarCorreo);
+	$("#telefono").blur(buscarTelefono);
 	
 	
 	$("#form_filtros").submit(listarClientes);
@@ -132,34 +133,64 @@ function cargarHistorial() {
 	
 	
 }
+
+
+
 function buscarCorreo() {
 	var correo = $(this).val();
-	$(this).addClass("cargando");
 	
-	$.ajax({
-		url: "../funciones/fila_select.php",
-		data: {
-			"tabla": "clientes",
-			"id_campo": "correo",
-			"id_valor": correo
-		}
-		
-		}).done(function (respuesta) {
-		if(respuesta.encontrado > 0){
+	if(correo != ''){
+		$(this).addClass("cargando");
+		$.ajax({
+			url: "../funciones/fila_select.php",
+			data: {
+				"tabla": "clientes",
+				"id_campo": "correo",
+				"id_valor": correo
+			}
 			
+			}).done(function (respuesta) {
+			if(respuesta.encontrado > 0){
 				alertify.error("El correo ya esta registrado");
-		}
+				$("#correo").focus();
+			}
+			
+			}).fail(function (xht, error, errnum) {
+			
+			alertify.error("Error", errnum);
+			}).always(function () {
+			$(this).removeClass("cargando");
+		});
+	}
+}
+
+function buscarTelefono() {
+	var telefono = $(this).val();
+	
+	if(telefono != ''){
+		$(this).addClass("cargando");
 		
-		$("#correo").focus();
-		
-		
-		
-		}).fail(function (xht, error, errnum) {
-		
-		alertify.error("Error", errnum);
-		}).always(function () {
-		$(this).removeClass("cargando");
-	});
+		$.ajax({
+			url: "../funciones/fila_select.php",
+			data: {
+				"tabla": "clientes",
+				"id_campo": "telefono",
+				"id_valor": telefono
+			}
+			
+			}).done(function (respuesta) {
+			if(respuesta.encontrado > 0){
+				alertify.error("El teléfono ya esta registrado");
+				$("#telefono").focus();
+			}
+			
+			}).fail(function (xht, error, errnum) {
+			
+			alertify.error("Error", errnum);
+			}).always(function () {
+			$(this).removeClass("cargando");
+		});
+	}
 	
 	
 }

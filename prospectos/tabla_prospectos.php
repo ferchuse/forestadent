@@ -31,7 +31,7 @@
 	id_clientes
 	) t_fechas_ultima_interaccion ON fecha_interacciones = fecha_ultima_interaccion
 	) AS t_ultimas_interacciones USING (id_clientes)
-	
+	WHERE clientes.id_vendedores = '{$_COOKIE["id_usuarios"]}'
 	HAVING ultima_accion = '{$_GET["ultima_accion"]}'
 	
 	";

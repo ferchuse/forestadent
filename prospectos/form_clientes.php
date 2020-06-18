@@ -11,12 +11,12 @@
 					<input type="hidden"  name="id_clientes" >
 					
 					<div class="form-group">
-						<label for="apellidos">Apellidos:</label>
-						<input  class="form-control" required   name="apellidos"  >
-					</div>
 					<div class="form-group">
 						<label for="nombre">Nombre:</label>
 						<input  class="form-control" required  name="nombre"  >
+					</div>
+						<label for="apellidos">Apellidos:</label>
+						<input  class="form-control" required   name="apellidos"  >
 					</div>
 					<div class="form-group">
 						<label for="correo">Correo</label>
@@ -24,7 +24,7 @@
 					</div>
 					<div class="form-group">
 						<label for="telefono">Teléfono:</label>
-						<input class="form-control" type="tel" required  name="telefono" >			
+						<input class="form-control" type="tel" required  id="telefono" name="telefono" >			
 					</div>
 					<div class="form-group">
 						<label for="estado">Estado</label>
@@ -70,10 +70,7 @@
 						<label for="especialidad">Especialidad</label>
 						<input class="form-control"    name="especialidad">
 					</div>
-					<div class="form-group">
-						<label for="correo">Correo</label>
-						<input class="form-control" type="email"  name="correo" required >			
-					</div>
+					
 					<div class="form-group">
 						<label for="domicilio">Domicilio:</label>
 						<textarea class="form-control"  name="domicilio" ></textarea>
